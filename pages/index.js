@@ -9,7 +9,6 @@ export default function index(){
 }
 async function cadastrar(){
     let api = await fetch("https://aprendendo-vercel-five.vercel/api/cadastrar",{
-        method:"PUT",
         "nome":document.querySelector('#nome').value,
         "descricao":document.querySelector('#descricao').value,
         "isbn":document.querySelector('#isbn').value,
