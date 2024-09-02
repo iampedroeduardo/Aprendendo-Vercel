@@ -8,7 +8,7 @@ export default function index(){
     <button>Mostrar</button></>);
 }
 async function cadastrar(){
-    let api = await fetch("https://localhost:3000/api/cadastrar",{
+    let api = await fetch("https://aprendendo-vercel-five.vercel/api/cadastrar",{
         "nome":document.querySelector('#nome').value,
         "descricao":document.querySelector('#descricao').value,
         "isbn":document.querySelector('#isbn').value,
