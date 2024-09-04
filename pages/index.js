@@ -1,4 +1,5 @@
 import {sql} from "@vercel/postgres";
+process.env.POSTGRES_URL = "postgres://default:gQEob8n1aRNT@ep-lingering-tooth-a41hbbd1-pooler.us-east-1.aws.neon.tech/verceldb?sslmode=require";
 
 export default function index(){
     return (<>Nome:<input id="nome" type="text"></input>
@@ -10,5 +11,6 @@ export default function index(){
     <button>Mostrar</button></>);
 }
 async function cadastrar(){
-    await sql `INSERT INTO livros(titulo,sinopse,isbn,autor,editora) VALUES ('${document.querySelector('#nome').value}','${document.querySelector("#descricao").value}','${document.querySelector("#isbn").value}','${document.querySelector("#autor").value}','${document.querySelector("#editora").value}')`;
+    await sql `INSERT INTO livros(titulo,sinopse,isbn,autor,editora) VALUES (${document.querySelector('#nome').value},${document.querySelector("#descricao").value},${document.querySelector("#isbn").value},${document.querySelector("#autor").value},${document.querySelector("#editora").value})`;
 }
+
