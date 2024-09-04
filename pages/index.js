@@ -1,3 +1,5 @@
+import {sql} from "@vercel/postgres";
+
 export default function index(){
     return (<>Nome:<input id="nome" type="text"></input>
     Autor:<input id="autor" type="text"></input>
@@ -8,11 +10,5 @@ export default function index(){
     <button>Mostrar</button></>);
 }
 async function cadastrar(){
-    let api = await fetch("https://aprendendo-vercel-five.vercel/api/cadastrar",{
-        "nome":document.querySelector('#nome').value,
-        "descricao":document.querySelector('#descricao').value,
-        "isbn":document.querySelector('#isbn').value,
-        "editora":document.querySelector('#editora').value,
-        "autor":document.querySelector('#autor').value
-    });
+    await sql `INSERT INTO livros(titulo,sinopse,isbn,autor,editora) VALUES ('${document.querySelector('#nome').value}','${document.querySelector("#descricao").value}','${document.querySelector("#isbn").value}','${document.querySelector("#autor").value}','${document.querySelector("#editora").value}')`;
 }
